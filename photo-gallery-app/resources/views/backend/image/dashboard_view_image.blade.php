@@ -55,6 +55,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                {{ $allData->links() }}
                             </div>
                         </div>
                         <!-- /.box-body -->

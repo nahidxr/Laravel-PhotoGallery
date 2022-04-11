@@ -35,7 +35,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $data['allData'] = Image::all();
+    $data['allData'] = Image::paginate(10);
     return view('backend.image.dashboard_view_image', $data);
 })->name('dashboard');
 

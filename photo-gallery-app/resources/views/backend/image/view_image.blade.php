@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 
-
+<div id="image_data">
 <div class="content-wrapper">
     <div class="container-full">
         <!-- Content Header (Page header) -->
@@ -44,8 +44,10 @@
                                             </td>
                                             <td>{{ $item->title}}</td>
                                             <td>{{ $item->description}}</td>
-                                            <td><a href="{{ route('image.edit',$item->id) }}" class="btn btn-info">Edit</a>
-                                                <a href="{{ route('image.delete',$item->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                                            <td><a href="{{ route('image.edit',$item->id) }}"
+                                                    class="btn btn-info">Edit</a>
+                                                <a href="{{ route('image.delete',$item->id) }}" class="btn btn-danger"
+                                                    id="delete">Delete</a>
                                             </td>
 
                                         </tr>
@@ -63,6 +65,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                {{ $allData->links() }}
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -81,7 +84,38 @@
 
     </div>
 </div>
-
+</div>
 
 
 @endsection
+
+@push('scripts')
+
+<script>
+    $(document).ready(function () {
+
+        // alert('123');
+        $(document).on('click', '.pagination a', function (event) {
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            alert(page);
+
+        });
+
+
+    });
+    function ImageView(page){
+        $.ajax({
+            type:"Get",
+            url:"{{route(image.view)}}",
+            success:function(data){
+                $('#image_data').html(data);
+            }
+
+        })
+
+    }
+
+</script>
+
+@endpush

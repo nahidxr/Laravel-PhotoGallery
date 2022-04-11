@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\File;
 
 class ImageController extends Controller
 {
-    public function ImageView()
+    public function ImageView(Request $request)
     {
-        $data['allData'] = Image::all();
+        // $data['allData'] = Image::all();
+        $data['allData'] = Image::paginate(2);
         return view('backend.image.view_image', $data);
     }
     public function ImageAdd()
