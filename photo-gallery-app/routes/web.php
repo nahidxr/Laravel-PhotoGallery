@@ -35,7 +35,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $data['allData'] = Image::paginate(10);
+    $data['allData'] = Image::all();
     return view('backend.image.dashboard_view_image', $data);
 })->name('dashboard');
 
@@ -61,4 +61,5 @@ Route::prefix('images')->group(function () {
     Route::get('/edit/{id}', [ImageController::class, 'ImageEdit'])->name('image.edit');
     Route::post('/update/{id}', [ImageController::class, 'ImageUpdate'])->name('image.update');
     Route::get('/delete/{id}', [ImageController::class, 'ImageDelete'])->name('image.delete');
+    Route::get('/sort/{id}', [ImageController::class, 'SortData'])->name('sort.data');
 });

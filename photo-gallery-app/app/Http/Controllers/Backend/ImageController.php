@@ -11,8 +11,9 @@ class ImageController extends Controller
 {
     public function ImageView(Request $request)
     {
-        // $data['allData'] = Image::all();
-        $data['allData'] = Image::paginate(2);
+        $data['allData'] = Image::all();
+        // return $data;
+        // $data['allData'] = Image::paginate();
         return view('backend.image.view_image', $data);
     }
     public function ImageAdd()
@@ -100,11 +101,26 @@ class ImageController extends Controller
     {
 
         $data = Image::find($id);
+        unlink("upload/images/" . $data->image);
         $data->delete();
         $notification = array(
             'message' => 'Image Deleted Successfully',
             'alert-type' => 'info'
         );
         return redirect()->route('image.view')->with($notification);
+    }
+    public function sortData($id)
+    {
+        if ($id == 1) {
+            $data['allData'] = Image::orderBy('title', 'desc')->get();
+        } else {
+            $data['allData'] = Image::orderBy('created_at', 'desc')->get();
+        }
+        //return view('backend.image.view_image', compact('data'));
+        // return response()->json($data);
+        //return response()->json($data);
+        // return $data;
+        // $data['allData'] = Image::paginate();
+        return view('backend.image.view_image', $data)->render();
     }
 }
