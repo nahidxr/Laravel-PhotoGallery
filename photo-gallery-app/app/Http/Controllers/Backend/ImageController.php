@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class ImageController extends Controller
 {
     public function ImageView()
     {
         $data['allData'] = Image::all();
-        return view('backend.image.view_image',$data);
+        return view('backend.image.view_image', $data);
     }
     public function ImageAdd()
     {
@@ -49,11 +50,60 @@ class ImageController extends Controller
         return redirect()->route('image.view')->with($notification);
     }
 
-    public function ImageEdit($id){
+    public function ImageEdit($id)
+    {
 
         $editData = Image::find($id);
 
         return view('backend.image.edit_Image', compact('editData'));
+    }
+    public function ImageUpdate(Request $request, $id)
+    {
 
+        $data = Image::find($id);
+
+        $validatedData = $request->validate([
+
+
+            'title' => 'required',
+            'description' => 'required',
+
+        ]);
+
+        $data->title = $request->title;
+        $data->description = $request->description;
+        if ($request->hasFile('image')) {
+            $destination = 'upload/images/' . $data->image;
+            if (File::exists($destination)) {
+
+                File::delete($destination);
+            }
+
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move('upload/images', $filename);
+            $data->image = $filename;
+        }
+        $data->update();
+
+        $notification = array(
+            'message' => 'Image Updated Successfully',
+            'alert-type' => 'success'
+
+        );
+        return redirect()->route('image.view')->with($notification);
+    }
+    public function ImageDelete($id)
+    {
+
+        $data = Image::find($id);
+        $data->delete();
+        $notification = array(
+            'message' => 'Image Deleted Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('image.view')->with($notification);
     }
 }

@@ -16,7 +16,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     {{-- <form method="post" action="{{ route('image.update',$editData->id) }}" enctype="multipart/form-data"> --}}
-                        <form method="post" action="#" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('image.update',$editData->id) }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <h5>Image Title <span class="text-danger">*</span></h5>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="text-xs-right">
                     {{-- <button type="submit" class="btn btn-rounded btn-info">Submit</button> --}}
-                    <input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit">
+                    <input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
@@ -34,8 +35,10 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('admin.index');
+    $data['allData'] = Image::all();
+    return view('backend.image.dashboard_view_image', $data);
 })->name('dashboard');
+
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
 
 //manage user
@@ -56,6 +59,6 @@ Route::prefix('images')->group(function () {
     Route::get('/add', [ImageController::class, 'ImageAdd'])->name('image.add');
     Route::post('/store', [ImageController::class, 'ImageStore'])->name('image.store');
     Route::get('/edit/{id}', [ImageController::class, 'ImageEdit'])->name('image.edit');
-    // Route::post('/update/{id}', [ImageController::class, 'UserUpdate'])->name('users.update');
-    // Route::get('/delete/{id}', [ImageController::class, 'UserDelete'])->name('users.delete');
+    Route::post('/update/{id}', [ImageController::class, 'ImageUpdate'])->name('image.update');
+    Route::get('/delete/{id}', [ImageController::class, 'ImageDelete'])->name('image.delete');
 });

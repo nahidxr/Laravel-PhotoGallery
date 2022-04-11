@@ -15,7 +15,7 @@ $route = Route::current()->getName();
                     <!-- logo for regular state and mobile devices -->
                     <div class="d-flex align-items-center justify-content-center">
                         <img src="{{ asset('backend/images/logo-dark.png')}}" alt="">
-                        <h3><b>School Management System</b> Admin</h3>
+                        <h3><b>Photo Galary App</b> Admin</h3>
                     </div>
                 </a>
             </div>
@@ -41,54 +41,30 @@ $route = Route::current()->getName();
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('user.view') }}"><i class="ti-more"></i>View User</a></li>
-                    {{-- <li><a href="{{ route('user.add') }}"><i class="ti-more"></i>Add User</a></li> --}}
-                </ul>
-            </li>
-            <li class="treeview {{ ($prefix == '/users')? 'active' : '' }}">
-                <a href="#">
-                    <i data-feather="message-circle"></i>
-                    <span>Photo Gallery</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-right pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ route('image.view') }}"><i class="ti-more"></i>View Photo Gallery</a></li>
-                    {{-- <li><a href="{{ route('user.add') }}"><i class="ti-more"></i>Add User</a></li> --}}
-                </ul>
-            </li>
-
-         
-
-
-
-            {{-- <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li> --}}
+                    {{-- <li><a href="{{ route('user.add') }}"><i class="ti-more"></i>Add User</a>
+            </li> --}}
         </ul>
         </li>
-
-
-        <li class="header nav-small-cap">User Interface</li>
-
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/images')? 'active' : '' }}">
             <a href="#">
-                <i data-feather="grid"></i>
-                <span>Components</span>
+                <i data-feather="message-circle"></i>
+                <span>Photo Gallery</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="components_alerts.html"><i class="ti-more"></i>Alerts</a></li>
-                <li><a href="components_badges.html"><i class="ti-more"></i>Badge</a></li>
-            </ul>
+                <li><a href="{{ route('image.view') }}"><i class="ti-more"></i>View Photo Gallery</a></li>
+        </ul>
         </li>
 
-
+        </ul>
+        </li>
 
         <li>
-            <a href="auth_login.html">
+            <a href="{{ route('admin.logout') }}">
                 <i data-feather="lock"></i>
-                <span>Log Out</span>
+                <span style="text-align: center">Log Out</span>
             </a>
         </li>
 
