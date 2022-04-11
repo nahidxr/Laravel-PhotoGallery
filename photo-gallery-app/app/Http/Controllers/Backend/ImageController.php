@@ -112,15 +112,29 @@ class ImageController extends Controller
     public function sortData($id)
     {
         if ($id == 1) {
-            $data['allData'] = Image::orderBy('title', 'desc')->get();
+            $data= Image::orderBy('title', 'desc')->get();
         } else {
-            $data['allData'] = Image::orderBy('created_at', 'desc')->get();
+            $data= Image::orderBy('created_at', 'desc')->get();
         }
         //return view('backend.image.view_image', compact('data'));
-        // return response()->json($data);
-        //return response()->json($data);
+
+// foreach ($data as $item){
+//     $html = "<tr><td>
+//     '.$item->id.'
+//     </td>
+//     <td>
+//     '.$item->title'
+//     </td>
+//     <td>
+//     '.$item->description'
+//     </td>
+
+//     </tr>";
+//   # code...
+// }
+return response($data);
         // return $data;
         // $data['allData'] = Image::paginate();
-        return view('backend.image.view_image', $data)->render();
+       // return view('backend.image.view_image', $data)->render();
     }
 }

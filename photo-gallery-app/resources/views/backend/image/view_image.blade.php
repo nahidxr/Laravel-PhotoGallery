@@ -11,7 +11,7 @@
 
                     <div class="col-12">
 
-                        <div class="box">
+                        <div id="aaa" class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Image List</h3>
                                 <a href=" {{ route('image.add') }}" style="float: right;"
@@ -24,7 +24,8 @@
                                     <h2 class="center">Sort By</h2>
                                 </label>
                                 <select name="sort" id="sort" class="form-control sortby">
-                                    <option selected value="1">sorted by title</option>
+                                    <option value="3"></option>
+                                    <option value="1">sorted by title</option>
                                     <option value="2">sorted by date</option>
                                 </select>
                             </div>
@@ -146,9 +147,52 @@ $('#image_data').html(data);
                 url: 'sort/' + sort,
 
                 success: function (data) {
-                    // $btn.prop('disabled', false);
+
+
+
                     console.log(data);
-                    $('body').html(data);
+                    var res = '';
+                    $.each(data, function (key, value) {
+                        res +=
+                            '<tr>' +
+                            '<td>' + value.id + '</td>' +
+
+
+
+
+                        //     '<td>'
+
+                        //     '<img src =
+                        //     "{{ (!empty(' + value.image +'))? url('upload/images/'.$item->image):url('upload/no_image.jpg') }}"
+                        // width = "70px"
+                        // height = "70px"
+                        // alt = "image" >
+
+                        //     '</td>' +
+                            '<td>' + value.title + '</td>' +
+                            '<td>' + value.description + '</td>' +
+                            '<td>' + value.created_at + '</td>' +
+                            '</tr>';
+
+                    });
+
+                    $('tbody').html(res);
+
+
+
+                    // console.log(data);
+
+                    //             var trHTML = '';
+                    // $.each(response, function (i, data) {
+                    //     trHTML += '<tr><td>' + data.id + '</td><td>' + data.title + '</td><td>' + data.description + '</td></tr>';
+                    // });
+                    // $('tbody').html(data);
+                    // ); //.appendTo('#records_table');
+
+
+                    // $btn.prop('disabled', false);
+                    // console.log(data);
+                    // $('#aaa').html(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(JSON.stringify(jqXHR));
