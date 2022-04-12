@@ -11,8 +11,8 @@ class HomeController extends Controller
     public function index()
     {
 
-        $data['allData'] = Image::all();
-        return view('frontend.layouts.index', $data);
+        // $data['allData'] = Image::all();
+        return view('frontend.layouts.index');
     }
 
     public function MoreImage()

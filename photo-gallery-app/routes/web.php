@@ -30,7 +30,7 @@ use App\Http\Controllers\frontend\HomeController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/single_page', [HomeController::class, 'MoreImage'])->name('more.image');
 Route::get('/service_page', [HomeController::class, 'ServiceDetails'])->name('service.details');
-Route::get('/contact_page', [HomeController::class, 'ContacDetails'])->name('contact.details');
+Route::get('/contact_page', [HomeController::class, 'ContactDetails'])->name('contact.details');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
