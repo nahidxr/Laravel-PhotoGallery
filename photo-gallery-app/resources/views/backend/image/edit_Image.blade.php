@@ -25,6 +25,38 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <h5>Image Category<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <select name="image_category" id="select" required=""
+                                    class="form-control">
+                                    <option value="" selected="" disabled="">Select Image Category
+                                    </option>
+                                    <option value="Nature"
+                                        {{ ($editData->image_category == "Nature" ? "selected": "") }}>
+                                        Nature</option>
+                                        <option value="Portrait"
+                                        {{ ($editData->image_category == "Portrait" ? "selected": "") }}>
+                                        Portrait</option>
+                                        <option value="People"
+                                        {{ ($editData->image_category == "People" ? "selected": "") }}>
+                                        People</option>
+                                        <option value="Architecture"
+                                        {{ ($editData->image_category == "Architecture" ? "selected": "") }}>
+                                        Architecture</option>
+                                        <option value="Animals"
+                                        {{ ($editData->image_category == "Animals" ? "selected": "") }}>
+                                        Animals</option>
+                                        <option value="Sports"
+                                        {{ ($editData->image_category == "Sports" ? "selected": "") }}>
+                                        Sports</option>
+                                        <option value="Travel"
+                                        {{ ($editData->image_category == "Travel" ? "selected": "") }}>
+                                        Travel</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <h5>Image Description <span class="text-danger">*</span></h5>
                             <div class="controls">
                                 {{-- <input type="text" name="description"   class="form-control" required=""> --}}

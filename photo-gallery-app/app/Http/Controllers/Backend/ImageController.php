@@ -34,6 +34,7 @@ class ImageController extends Controller
 
         $data = new Image();
         $data->title = $request->title;
+        $data->image_category = $request->image_category;
         $data->description = $request->description;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -73,6 +74,7 @@ class ImageController extends Controller
         ]);
 
         $data->title = $request->title;
+        $data->image_category = $request->image_category;
         $data->description = $request->description;
         if ($request->hasFile('image')) {
             $destination = 'upload/images/' . $data->image;

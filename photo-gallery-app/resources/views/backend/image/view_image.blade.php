@@ -39,6 +39,7 @@
                                                 <th>Image File</th>
                                                 <th>Image Title</th>
                                                 <th>Description</th>
+                                                <th>Image Category</th>
                                                 <th>Inserted Date</th>
                                                 <th>Action</th>
 
@@ -58,6 +59,7 @@
                                                 </td>
                                                 <td>{{ $item->title}}</td>
                                                 <td>{{ $item->description}}</td>
+                                                <td>{{ $item->image_category}}</td>
                                                 <td>{{ $item->created_at}}</td>
                                                 <td><a href="{{ route('image.edit',$item->id) }}"
                                                         class="btn btn-info">Edit</a>
@@ -75,6 +77,8 @@
                                                 <th>Image File</th>
                                                 <th>Image Title</th>
                                                 <th>Description</th>
+                                                <th>Image Category</th>
+                                                <th>Inserted Date</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -160,15 +164,15 @@ $('#image_data').html(data);
 
 
 
-                        //     '<td>'
+                            //     '<td>'
 
-                        //     '<img src =
-                        //     "{{ (!empty(' + value.image +'))? url('upload/images/'.$item->image):url('upload/no_image.jpg') }}"
-                        // width = "70px"
-                        // height = "70px"
-                        // alt = "image" >
+                            //     '<img src =
+                            //     "{{ (!empty(' + value.image +'))? url('upload/images/'.$item->image):url('upload/no_image.jpg') }}"
+                            // width = "70px"
+                            // height = "70px"
+                            // alt = "image" >
 
-                        //     '</td>' +
+                            //     '</td>' +
                             '<td>' + value.title + '</td>' +
                             '<td>' + value.description + '</td>' +
                             '<td>' + value.created_at + '</td>' +

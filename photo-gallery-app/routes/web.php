@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ImageController;
+use App\Http\Controllers\frontend\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,22 +18,20 @@ use App\Http\Controllers\Backend\ImageController;
 |
 */
 
+
 // Route::get('/', function () {
-//     return view('welcome');
+//     $data['allData'] = Image::all();
+//     return view('frontend.layouts.app');
 // });
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-Route::get('/', function () {
-    return view('auth.login');
-});
+
+
+//frontend
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/single_page', [HomeController::class, 'MoreImage'])->name('more.image');
+Route::get('/service_page', [HomeController::class, 'ServiceDetails'])->name('service.details');
+Route::get('/contact_page', [HomeController::class, 'ContacDetails'])->name('contact.details');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $data['allData'] = Image::all();

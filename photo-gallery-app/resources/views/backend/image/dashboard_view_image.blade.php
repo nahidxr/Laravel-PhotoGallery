@@ -25,6 +25,8 @@
                                             <th>Image File</th>
                                             <th>Image Title</th>
                                             <th>Description</th>
+                                            <th>Image Category</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,7 +40,8 @@
                                             </td>
                                             <td>{{ $item->title}}</td>
                                             <td>{{ $item->description}}</td>
-                                           
+                                            <td>{{ $item->image_category}}</td>
+
 
                                         </tr>
                                         @endforeach
@@ -50,7 +53,8 @@
                                             <th>Image File</th>
                                             <th>Image Title</th>
                                             <th>Description</th>
-                                          
+                                            <th>Image Category</th>
+
 
                                         </tr>
                                     </tfoot>

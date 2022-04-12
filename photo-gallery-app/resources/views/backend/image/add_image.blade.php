@@ -24,6 +24,25 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <h5>Image Category <span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <select name="image_category" id="select" required=""
+                                    class="form-control">
+                                    <option value="" selected="" disabled="">Select Category
+                                    </option>
+                                    <option value="Nature">Nature</option>
+                                    <option value="Portrait">Portrait</option>
+                                    <option value="People">People</option>
+                                    <option value="Architecture">Architecture</option>
+                                    <option value="Animals">Animals</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Travel">Travel</option>
+
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <h5>Image Description <span class="text-danger">*</span></h5>
                             <div class="controls">
                                 {{-- <input type="text" name="description"   class="form-control" required=""> --}}
