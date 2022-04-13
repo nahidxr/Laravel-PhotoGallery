@@ -58,7 +58,6 @@
                         <div class="form-group">
                             <h5>Image Description <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                {{-- <input type="text" name="description"   class="form-control" required=""> --}}
                                 <textarea name="description" value="" class="form-control"
                                     required="">{{ $editData->description}}</textarea>
                             </div>
@@ -69,8 +68,6 @@
                             <h5> Image <span class="text-danger">*</span></h5>
                             <div class="controls">
                                 <input type="file" name="image" class="form-control" id="image">
-                                {{-- <img src="{{ asset('upload/images/'.$editData->image) }}" width="70px"
-                                height="70px" alt="image"> --}}
                             </div>
 
                         </div>
@@ -82,11 +79,8 @@
                             </div>
 
                         </div>
-
-
                 </div>
                 <div class="text-xs-right">
-                    {{-- <button type="submit" class="btn btn-rounded btn-info">Submit</button> --}}
                     <input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
                 </div>
             </div>

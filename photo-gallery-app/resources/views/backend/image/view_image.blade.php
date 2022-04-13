@@ -159,12 +159,9 @@
                                 <td>' + value.created_at + '</td>\
                                 <td><a href="{{ route("image.edit",' + value.id +') }}"class="btn btn-info">Edit</a> <a href="{{ route("image.delete",'+value.id +') }}"class="btn btn-danger">Delete</a></td>\</tr>';
 
-
                     });
 
                     $('tbody').html(res);
-
-
 
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

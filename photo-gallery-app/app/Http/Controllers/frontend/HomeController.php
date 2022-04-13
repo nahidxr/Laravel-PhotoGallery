@@ -22,7 +22,7 @@ class HomeController extends Controller
 
         $data['allData'] = DB::table('images')
             ->where('image_category', $id)
-            ->paginate(2);
+            ->paginate(10);
         return view('frontend.pages.single', $data);
     }
     public function ServiceDetails()

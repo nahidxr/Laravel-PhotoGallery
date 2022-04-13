@@ -12,13 +12,13 @@ class ImageController extends Controller
 {
     public function ImageView()
     {
-         $data['allData'] = Image::paginate(10);
+         $data['allData'] = Image::paginate(2);
         return view('backend.image.view_image', $data);
     }
     function fetch()
     {
      
-        $data['allData'] = Image::paginate(10);
+        $data['allData'] = Image::paginate(2);
          return view('backend.image.view_image', $data)->render();
      
     }

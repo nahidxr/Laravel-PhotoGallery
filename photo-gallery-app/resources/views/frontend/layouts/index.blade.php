@@ -17,12 +17,6 @@
                   
                     <a href="{{ route('more.image',$item->id) }}" class="btn btn-outline-white py-2 px-4">More Photos</a>
                 </div>
-
-                {{-- <img src="{{ (!empty($item->image))? url('upload/images/'.$item->image):url('upload/no_image.jpg') }}" --}}
-
-                {{-- {{ (!empty($item->image))? url('upload/images/'.$item->image):url('upload/no_image.jpg') }}
-                <img src="{{ asset('/frontend/images/$item->category_image')}}" alt="Image" class="img-fluid"> --}}
-
                 <img src="{{ url('/frontend/images/'.$item->category_image) }}" alt="Image" class="img-fluid">
 
             </div>
