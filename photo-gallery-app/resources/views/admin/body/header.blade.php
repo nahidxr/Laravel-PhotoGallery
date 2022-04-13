@@ -16,18 +16,22 @@
         <div class="navbar-custom-menu r-side">
             <ul class="nav navbar-nav">
                 <!-- full Screen -->
-                <li class="search-bar">
+                {{-- <li class="search-bar">
                     <div class="lookup lookup-circle lookup-right">
                         <input type="text" name="s">
                     </div>
-                </li>
+                </li> --}}
+               
+                {{-- <li> <a href="{{ route('admin.logout') }}">Logout</a></li> --}}
                 <!-- User Account-->
+
                 <li class="dropdown user user-menu" class="mt-5">
                     {{-- <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown"
                         title="User">
                         <img src="{{asset('upload/no_image.png')}}"
                     alt="">
                     </a> --}}
+
                     <a href="{{ route('admin.logout') }}">Logout</a>
                     {{-- <ul class="dropdown-menu animated flipInX">
                         <li class="user-body">

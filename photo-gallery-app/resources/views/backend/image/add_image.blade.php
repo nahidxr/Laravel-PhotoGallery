@@ -30,13 +30,15 @@
                                     class="form-control">
                                     <option value="" selected="" disabled="">Select Category
                                     </option>
-                                    <option value="Nature">Nature</option>
-                                    <option value="Portrait">Portrait</option>
-                                    <option value="People">People</option>
-                                    <option value="Architecture">Architecture</option>
-                                    <option value="Animals">Animals</option>
-                                    <option value="Sports">Sports</option>
-                                    <option value="Travel">Travel</option>
+                                    <option value="1">Nature</option>
+                                    <option value="2">Portrait</option>
+                                    <option value="5">People</option>
+                                    <option value="6">Architecture</option>
+                                    <option value="7">Animals</option>
+                                    <option value="8">Sports</option>
+                                    <option value="9">Travel</option>
+                                    <option value="10">Food</option>
+                                    <option value="11">Personal</option>
 
                                 </select>
 

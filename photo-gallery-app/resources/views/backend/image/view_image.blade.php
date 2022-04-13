@@ -84,7 +84,7 @@
                                             </tr>
                                         </tfoot>
                                     </table>
-                                    {{-- {{ $allData->links() }} --}}
+                                    {{ $allData->links() }}
                                 </div>
                             </div>
                             <!-- /.box-body -->
@@ -108,37 +108,43 @@
 
 @endsection
 
-{{-- @push('scripts')
-
+@push('scripts')
 <script>
+
     $(document).ready(function () {
 
-        // alert('123');
-        $(document).on('click', '.pagination a', function (event) {
+        //alert('123');
+        $(document).on('click', '.page-link', function (event) {
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
-            alert(page);
+        // alert(page);
+
+  $.ajax({
+      type: 'get',
+      url:"{{ route('image.fetch') }}",
+      success:function(data)
+      
+      {
+          console.log(data);
+       $('#image_data').html(data);
+      }
+    });
 
         });
 
-
     });
-    function ImageView(page){
-        $.ajax({
-            type:"Get",
-            url:"{{route(image.view)}}",
-success:function(data){
-$('#image_data').html(data);
-}
 
-})
-
-}
-
+   
 </script>
 
-@endpush --}}
+
+@endpush
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $("select.sortby").change(function () {
@@ -151,52 +157,36 @@ $('#image_data').html(data);
                 url: 'sort/' + sort,
 
                 success: function (data) {
+                    // console.log(data);
+                     var res = '';
 
-
-
-                    console.log(data);
-                    var res = '';
+                   // $('tbody').html("");
                     $.each(data, function (key, value) {
-                        res +=
-                            '<tr>' +
-                            '<td>' + value.id + '</td>' +
+
+                        
+                        res+='<tr>\
+                                <td>'+value.id+'</td>\
+                                <td><img src="/upload/images/'+value.image +'" width = "70px" height = "70px" alt = "image"></td>\
+                                <td>'+value.title+'</td>\
+                                <td>'+value.description+'</td>\
+                                <td>'+value.image_category+'</td>\
+                                <td>'+value.created_at+'</td>\
+                                <td><a href="{{ route("image.edit",'+ value.id +') }}"class="btn btn-info">Edit</a> <a href="{{ route("image.delete",'+ value.id +') }}"class="btn btn-danger">Delete</a></td>\</tr>';
+                        
 
 
 
 
-                            //     '<td>'
 
-                            //     '<img src =
-                            //     "{{ (!empty(' + value.image +'))? url('upload/images/'.$item->image):url('upload/no_image.jpg') }}"
-                            // width = "70px"
-                            // height = "70px"
-                            // alt = "image" >
 
-                            //     '</td>' +
-                            '<td>' + value.title + '</td>' +
-                            '<td>' + value.description + '</td>' +
-                            '<td>' + value.created_at + '</td>' +
-                            '</tr>';
+
 
                     });
 
-                    $('tbody').html(res);
+                     $('tbody').html(res);
 
 
 
-                    // console.log(data);
-
-                    //             var trHTML = '';
-                    // $.each(response, function (i, data) {
-                    //     trHTML += '<tr><td>' + data.id + '</td><td>' + data.title + '</td><td>' + data.description + '</td></tr>';
-                    // });
-                    // $('tbody').html(data);
-                    // ); //.appendTo('#records_table');
-
-
-                    // $btn.prop('disabled', false);
-                    // console.log(data);
-                    // $('#aaa').html(data);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(JSON.stringify(jqXHR));

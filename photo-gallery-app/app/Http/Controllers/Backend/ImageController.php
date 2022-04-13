@@ -6,19 +6,25 @@ use App\Models\Image;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;
 
 class ImageController extends Controller
 {
-    public function ImageView(Request $request)
+    public function ImageView()
     {
-        $data['allData'] = Image::all();
-        // return $data;
-        // $data['allData'] = Image::paginate();
+         $data['allData'] = Image::paginate(10);
         return view('backend.image.view_image', $data);
     }
+    function fetch()
+    {
+     
+        $data['allData'] = Image::paginate(10);
+         return view('backend.image.view_image', $data)->render();
+     
+    }
+
     public function ImageAdd()
     {
-
         return view('backend.image.add_image');
     }
     public function ImageStore(Request $request)
@@ -114,29 +120,19 @@ class ImageController extends Controller
     public function sortData($id)
     {
         if ($id == 1) {
-            $data= Image::orderBy('title', 'desc')->get();
+            $data= Image::orderBy('id', 'desc')->get();
         } else {
             $data= Image::orderBy('created_at', 'desc')->get();
         }
-        //return view('backend.image.view_image', compact('data'));
 
-// foreach ($data as $item){
-//     $html = "<tr><td>
-//     '.$item->id.'
-//     </td>
-//     <td>
-//     '.$item->title'
-//     </td>
-//     <td>
-//     '.$item->description'
-//     </td>
+        return response($data);
+        
+    }
+    public function Dashboard(){
+        // $data['allData'] = Image::all();
+        $data['allData'] = Image::paginate(10);
 
-//     </tr>";
-//   # code...
-// }
-return response($data);
-        // return $data;
-        // $data['allData'] = Image::paginate();
-       // return view('backend.image.view_image', $data)->render();
+    return view('backend.image.dashboard_view_image', $data);
+
     }
 }

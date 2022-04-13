@@ -31,27 +31,33 @@
                                     class="form-control">
                                     <option value="" selected="" disabled="">Select Image Category
                                     </option>
-                                    <option value="Nature"
-                                        {{ ($editData->image_category == "Nature" ? "selected": "") }}>
+                                    <option value="1"
+                                        {{ ($editData->image_category == "1" ? "selected": "") }}>
                                         Nature</option>
-                                        <option value="Portrait"
-                                        {{ ($editData->image_category == "Portrait" ? "selected": "") }}>
+                                        <option value="2"
+                                        {{ ($editData->image_category == "2" ? "selected": "") }}>
                                         Portrait</option>
-                                        <option value="People"
-                                        {{ ($editData->image_category == "People" ? "selected": "") }}>
+                                        <option value="5"
+                                        {{ ($editData->image_category == "5" ? "selected": "") }}>
                                         People</option>
-                                        <option value="Architecture"
-                                        {{ ($editData->image_category == "Architecture" ? "selected": "") }}>
+                                        <option value="6"
+                                        {{ ($editData->image_category == "6" ? "selected": "") }}>
                                         Architecture</option>
-                                        <option value="Animals"
-                                        {{ ($editData->image_category == "Animals" ? "selected": "") }}>
+                                        <option value="7"
+                                        {{ ($editData->image_category == "7" ? "selected": "") }}>
                                         Animals</option>
-                                        <option value="Sports"
-                                        {{ ($editData->image_category == "Sports" ? "selected": "") }}>
+                                        <option value="8"
+                                        {{ ($editData->image_category == "8" ? "selected": "") }}>
                                         Sports</option>
-                                        <option value="Travel"
-                                        {{ ($editData->image_category == "Travel" ? "selected": "") }}>
+                                        <option value="9"
+                                        {{ ($editData->image_category == "9" ? "selected": "") }}>
                                         Travel</option>
+                                        <option value="10"
+                                        {{ ($editData->image_category == "10" ? "selected": "") }}>
+                                        Food</option>
+                                        <option value="11"
+                                        {{ ($editData->image_category == "11" ? "selected": "") }}>
+                                        Personal</option>
                                 </select>
 
                             </div>

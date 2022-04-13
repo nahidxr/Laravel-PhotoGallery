@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
@@ -66,7 +65,6 @@ class UserController extends Controller
         $notification = array(
             'message' => 'User Updated Successfully',
             'alert-type' => 'info'
-
 
         );
         return redirect()->route('user.view')->with($notification);

@@ -61,12 +61,12 @@ $route = Route::current()->getName();
         </ul>
         </li>
 
-        <li>
+        {{-- <li>
             <a href="{{ route('admin.logout') }}">
                 <i data-feather="lock"></i>
                 <span style="text-align: center">Log Out</span>
             </a>
-        </li>
+        </li> --}}
 
         </ul>
     </section>

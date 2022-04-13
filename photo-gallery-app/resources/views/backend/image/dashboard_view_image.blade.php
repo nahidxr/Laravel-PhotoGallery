@@ -59,7 +59,7 @@
                                         </tr>
                                     </tfoot>
                                 </table>
-                                {{-- {{ $allData->links() }} --}}
+                                {{ $allData->links() }}
                             </div>
                         </div>
                         <!-- /.box-body -->

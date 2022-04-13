@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\ImageController;
 use App\Http\Controllers\frontend\HomeController;
+use App\Http\Middleware\OnlyAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,30 +20,10 @@ use App\Http\Controllers\frontend\HomeController;
 */
 
 
-// Route::get('/', function () {
-//     $data['allData'] = Image::all();
-//     return view('frontend.layouts.app');
-// });
-
-
-
-//frontend
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/single_page', [HomeController::class, 'MoreImage'])->name('more.image');
-Route::get('/service_page', [HomeController::class, 'ServiceDetails'])->name('service.details');
-Route::get('/contact_page', [HomeController::class, 'ContactDetails'])->name('contact.details');
-
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $data['allData'] = Image::all();
-    return view('backend.image.dashboard_view_image', $data);
-})->name('dashboard');
-
-Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
-
-//manage user
-Route::prefix('users')->group(function () {
-
+//dashboard
+Route::get('/dashboard', [ImageController::class, 'Dashboard'])->name('dashboard')->middleware(['auth:sanctum', 'verified']);
+//manage users
+Route::prefix('users')->middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/view', [UserController::class, 'UserView'])->name('user.view');
     Route::get('/add', [UserController::class, 'UserAdd'])->name('user.add');
     Route::post('/store', [UserController::class, 'UserStore'])->name('users.store');
@@ -52,9 +33,9 @@ Route::prefix('users')->group(function () {
 });
 
 //manage photo gallery
-Route::prefix('images')->group(function () {
-
+Route::prefix('images')->middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/view', [ImageController::class, 'ImageView'])->name('image.view');
+    Route::get('/fetch', [ImageController::class, 'fetch'])->name('image.fetch');
     Route::get('/add', [ImageController::class, 'ImageAdd'])->name('image.add');
     Route::post('/store', [ImageController::class, 'ImageStore'])->name('image.store');
     Route::get('/edit/{id}', [ImageController::class, 'ImageEdit'])->name('image.edit');
@@ -62,3 +43,10 @@ Route::prefix('images')->group(function () {
     Route::get('/delete/{id}', [ImageController::class, 'ImageDelete'])->name('image.delete');
     Route::get('/sort/{id}', [ImageController::class, 'SortData'])->name('sort.data');
 });
+//frontend
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/single_page/{id}', [HomeController::class, 'MoreImage'])->name('more.image')->middleware(['auth:sanctum', 'verified']);
+Route::get('/service_page', [HomeController::class, 'ServiceDetails'])->name('service.details')->middleware(['auth:sanctum', 'verified']);
+Route::get('/contact_page', [HomeController::class, 'ContactDetails'])->name('contact.details')->middleware(['auth:sanctum', 'verified']);
+//admin logout
+Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');
