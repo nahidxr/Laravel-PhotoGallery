@@ -25,7 +25,6 @@
                                             <th>Image File</th>
                                             <th>Image Title</th>
                                             <th>Description</th>
-                                            <th>Image Category</th>
 
                                         </tr>
                                     </thead>
@@ -36,11 +35,10 @@
                                             <td>{{ $key+1 }}</td>
                                             <td>
                                                 <img src="{{ (!empty($item->image))? url('upload/images/'.$item->image):url('upload/no_image.jpg') }}"
-                                                    width="70px" height="70px" alt="image">
+                                                    width="90px" height="90px" alt="image">
                                             </td>
                                             <td>{{ $item->title}}</td>
                                             <td>{{ $item->description}}</td>
-                                            <td>{{ $item->image_category}}</td>
 
 
                                         </tr>
@@ -53,7 +51,6 @@
                                             <th>Image File</th>
                                             <th>Image Title</th>
                                             <th>Description</th>
-                                            <th>Image Category</th>
 
 
                                         </tr>

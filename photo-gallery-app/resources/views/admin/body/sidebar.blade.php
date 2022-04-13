@@ -48,14 +48,14 @@ $route = Route::current()->getName();
         <li class="treeview {{ ($prefix == '/images')? 'active' : '' }}">
             <a href="#">
                 <i data-feather="message-circle"></i>
-                <span>Photo Gallery</span>
+                <span>Manage Photo Gallery</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-right pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
                 <li><a href="{{ route('image.view') }}"><i class="ti-more"></i>View Photo Gallery</a></li>
-        </ul>
+            </ul>
         </li>
 
         </ul>
@@ -63,9 +63,9 @@ $route = Route::current()->getName();
 
         {{-- <li>
             <a href="{{ route('admin.logout') }}">
-                <i data-feather="lock"></i>
-                <span style="text-align: center">Log Out</span>
-            </a>
+        <i data-feather="lock"></i>
+        <span style="text-align: center">Log Out</span>
+        </a>
         </li> --}}
 
         </ul>

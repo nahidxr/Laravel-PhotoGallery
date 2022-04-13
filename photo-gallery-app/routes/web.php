@@ -45,8 +45,8 @@ Route::prefix('images')->middleware(['auth:sanctum', 'verified'])->group(functio
 });
 //frontend
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/single_page/{id}', [HomeController::class, 'MoreImage'])->name('more.image')->middleware(['auth:sanctum', 'verified']);
-Route::get('/service_page', [HomeController::class, 'ServiceDetails'])->name('service.details')->middleware(['auth:sanctum', 'verified']);
-Route::get('/contact_page', [HomeController::class, 'ContactDetails'])->name('contact.details')->middleware(['auth:sanctum', 'verified']);
+Route::get('/single_page/{id}', [HomeController::class, 'MoreImage'])->name('more.image');
+Route::get('/service_page', [HomeController::class, 'ServiceDetails'])->name('service.details');
+Route::get('/contact_page', [HomeController::class, 'ContactDetails'])->name('contact.details');
 //admin logout
 Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.logout');

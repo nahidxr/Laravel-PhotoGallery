@@ -26,8 +26,7 @@
                         <div class="form-group">
                             <h5>Image Category <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <select name="image_category" id="select" required=""
-                                    class="form-control">
+                                <select name="image_category" id="select" required="" class="form-control">
                                     <option value="" selected="" disabled="">Select Category
                                     </option>
                                     <option value="1">Nature</option>
@@ -38,7 +37,7 @@
                                     <option value="8">Sports</option>
                                     <option value="9">Travel</option>
                                     <option value="10">Food</option>
-                                    <option value="11">Personal</option>
+                                    <option value="11">Life Style</option>
 
                                 </select>
 

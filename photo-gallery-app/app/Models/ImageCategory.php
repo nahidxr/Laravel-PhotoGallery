@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImageCategory extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

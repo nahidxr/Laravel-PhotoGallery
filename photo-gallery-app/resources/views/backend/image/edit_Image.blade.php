@@ -15,49 +15,42 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    {{-- <form method="post" action="{{ route('image.update',$editData->id) }}" enctype="multipart/form-data"> --}}
-                        <form method="post" action="{{ route('image.update',$editData->id) }}" enctype="multipart/form-data">
+                    {{-- <form method="post" action="{{ route('image.update',$editData->id) }}"
+                    enctype="multipart/form-data"> --}}
+                    <form method="post" action="{{ route('image.update',$editData->id) }}"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <h5>Image Title <span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <input type="text" name="title" value="{{ $editData->title }}" class="form-control" required="">
+                                <input type="text" name="title" value="{{ $editData->title }}" class="form-control"
+                                    required="">
                             </div>
                         </div>
                         <div class="form-group">
                             <h5>Image Category<span class="text-danger">*</span></h5>
                             <div class="controls">
-                                <select name="image_category" id="select" required=""
-                                    class="form-control">
+                                <select name="image_category" id="select" required="" class="form-control">
                                     <option value="" selected="" disabled="">Select Image Category
                                     </option>
-                                    <option value="1"
-                                        {{ ($editData->image_category == "1" ? "selected": "") }}>
+                                    <option value="1" {{ ($editData->image_category == "1" ? "selected": "") }}>
                                         Nature</option>
-                                        <option value="2"
-                                        {{ ($editData->image_category == "2" ? "selected": "") }}>
+                                    <option value="2" {{ ($editData->image_category == "2" ? "selected": "") }}>
                                         Portrait</option>
-                                        <option value="5"
-                                        {{ ($editData->image_category == "5" ? "selected": "") }}>
+                                    <option value="5" {{ ($editData->image_category == "5" ? "selected": "") }}>
                                         People</option>
-                                        <option value="6"
-                                        {{ ($editData->image_category == "6" ? "selected": "") }}>
+                                    <option value="6" {{ ($editData->image_category == "6" ? "selected": "") }}>
                                         Architecture</option>
-                                        <option value="7"
-                                        {{ ($editData->image_category == "7" ? "selected": "") }}>
+                                    <option value="7" {{ ($editData->image_category == "7" ? "selected": "") }}>
                                         Animals</option>
-                                        <option value="8"
-                                        {{ ($editData->image_category == "8" ? "selected": "") }}>
+                                    <option value="8" {{ ($editData->image_category == "8" ? "selected": "") }}>
                                         Sports</option>
-                                        <option value="9"
-                                        {{ ($editData->image_category == "9" ? "selected": "") }}>
+                                    <option value="9" {{ ($editData->image_category == "9" ? "selected": "") }}>
                                         Travel</option>
-                                        <option value="10"
-                                        {{ ($editData->image_category == "10" ? "selected": "") }}>
+                                    <option value="10" {{ ($editData->image_category == "10" ? "selected": "") }}>
                                         Food</option>
-                                        <option value="11"
-                                        {{ ($editData->image_category == "11" ? "selected": "") }}>
-                                        Personal</option>
+                                    <option value="11" {{ ($editData->image_category == "11" ? "selected": "") }}>
+                                        Life Style</option>
                                 </select>
 
                             </div>
@@ -66,7 +59,8 @@
                             <h5>Image Description <span class="text-danger">*</span></h5>
                             <div class="controls">
                                 {{-- <input type="text" name="description"   class="form-control" required=""> --}}
-                                <textarea name="description" value="" class="form-control" required="">{{ $editData->description}}</textarea>
+                                <textarea name="description" value="" class="form-control"
+                                    required="">{{ $editData->description}}</textarea>
                             </div>
 
                         </div>
@@ -76,7 +70,7 @@
                             <div class="controls">
                                 <input type="file" name="image" class="form-control" id="image">
                                 {{-- <img src="{{ asset('upload/images/'.$editData->image) }}" width="70px"
-                                                height="70px" alt="image">  --}}
+                                height="70px" alt="image"> --}}
                             </div>
 
                         </div>

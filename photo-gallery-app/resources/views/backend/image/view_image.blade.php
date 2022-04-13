@@ -24,7 +24,7 @@
                                     <h2 class="center">Sort By</h2>
                                 </label>
                                 <select name="sort" id="sort" class="form-control sortby">
-                                    <option value="3"></option>
+                                    <option value="" selected="" disabled="">Select your Sort</option>
                                     <option value="1">sorted by title</option>
                                     <option value="2">sorted by date</option>
                                 </select>
@@ -39,7 +39,6 @@
                                                 <th>Image File</th>
                                                 <th>Image Title</th>
                                                 <th>Description</th>
-                                                <th>Image Category</th>
                                                 <th>Inserted Date</th>
                                                 <th>Action</th>
 
@@ -51,15 +50,12 @@
                                             <tr>
                                                 <td>{{ $key+1 }}</td>
                                                 <td>
-                                                    {{-- <img src="{{ asset('upload/images/'.$item->image) }}"
-                                                    width="70px"
-                                                    height="70px" alt="image"> --}}
+
                                                     <img src="{{ (!empty($item->image))? url('upload/images/'.$item->image):url('upload/no_image.jpg') }}"
                                                         width="70px" height="70px" alt="image">
                                                 </td>
                                                 <td>{{ $item->title}}</td>
                                                 <td>{{ $item->description}}</td>
-                                                <td>{{ $item->image_category}}</td>
                                                 <td>{{ $item->created_at}}</td>
                                                 <td><a href="{{ route('image.edit',$item->id) }}"
                                                         class="btn btn-info">Edit</a>
@@ -77,7 +73,6 @@
                                                 <th>Image File</th>
                                                 <th>Image Title</th>
                                                 <th>Description</th>
-                                                <th>Image Category</th>
                                                 <th>Inserted Date</th>
                                                 <th>Action</th>
 
@@ -110,38 +105,33 @@
 
 @push('scripts')
 <script>
-
     $(document).ready(function () {
 
         //alert('123');
         $(document).on('click', '.page-link', function (event) {
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
-        // alert(page);
+            // alert(page);
 
-  $.ajax({
-      type: 'get',
-      url:"{{ route('image.fetch') }}",
-      success:function(data)
-      
-      {
-          console.log(data);
-       $('#image_data').html(data);
-      }
-    });
+            $.ajax({
+                type: 'get',
+                url: "{{ route('image.fetch') }}",
+                success: function (data)
+
+                {
+                    console.log(data);
+                    $('#image_data').html(data);
+                }
+            });
 
         });
 
     });
 
-   
 </script>
 
 
 @endpush
-
-
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -150,7 +140,6 @@
         $("select.sortby").change(function () {
 
             var sort = $(this).children("option:selected").val();
-            //alert("You have selected the Option - " + sort);
 
             $.ajax({
                 type: 'get',
@@ -158,32 +147,22 @@
 
                 success: function (data) {
                     // console.log(data);
-                     var res = '';
-
-                   // $('tbody').html("");
+                    var res = '';
                     $.each(data, function (key, value) {
 
-                        
-                        res+='<tr>\
-                                <td>'+value.id+'</td>\
-                                <td><img src="/upload/images/'+value.image +'" width = "70px" height = "70px" alt = "image"></td>\
-                                <td>'+value.title+'</td>\
-                                <td>'+value.description+'</td>\
-                                <td>'+value.image_category+'</td>\
-                                <td>'+value.created_at+'</td>\
-                                <td><a href="{{ route("image.edit",'+ value.id +') }}"class="btn btn-info">Edit</a> <a href="{{ route("image.delete",'+ value.id +') }}"class="btn btn-danger">Delete</a></td>\</tr>';
-                        
 
-
-
-
-
-
+                        res += '<tr>\
+                                <td>' + value.id + '</td>\
+                                <td><img src="/upload/images/' + value.image + '" width = "70px" height = "70px" alt = "image"></td>\
+                                <td>' + value.title + '</td>\
+                                <td>' + value.description + '</td>\
+                                <td>' + value.created_at + '</td>\
+                                <td><a href="{{ route("image.edit",' + value.id +') }}"class="btn btn-info">Edit</a> <a href="{{ route("image.delete",'+value.id +') }}"class="btn btn-danger">Delete</a></td>\</tr>';
 
 
                     });
 
-                     $('tbody').html(res);
+                    $('tbody').html(res);
 
 
 

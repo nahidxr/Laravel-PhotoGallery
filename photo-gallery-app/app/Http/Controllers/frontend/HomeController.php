@@ -13,18 +13,17 @@ class HomeController extends Controller
     public function index()
     {
 
-         $data['allData'] = ImageCategory::all();
-        return view('frontend.layouts.index',$data);
+        $data['allData'] = ImageCategory::all();
+        return view('frontend.layouts.index', $data);
     }
 
     public function MoreImage($id)
     {
-    
+
         $data['allData'] = DB::table('images')
-                ->where('image_category',$id)
-                ->get();
-         return view('frontend.pages.single',$data);
-  
+            ->where('image_category', $id)
+            ->paginate(2);
+        return view('frontend.pages.single', $data);
     }
     public function ServiceDetails()
     {
