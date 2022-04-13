@@ -12,15 +12,18 @@ class ImageController extends Controller
 {
     public function ImageView()
     {
-         $data['allData'] = Image::paginate(2);
+        $data['allData'] = Image::paginate(10);
         return view('backend.image.view_image', $data);
     }
-    function fetch()
+  
+
+    public function Fetch(Request $request)
     {
-     
-        $data['allData'] = Image::paginate(2);
-         return view('backend.image.view_image', $data)->render();
-     
+
+        if ($request->ajax()) {
+            $data['allData'] = Image::all();
+            return view('backend.image.view_image', $data)->render();
+        }
     }
 
     public function ImageAdd()
@@ -120,19 +123,18 @@ class ImageController extends Controller
     public function sortData($id)
     {
         if ($id == 1) {
-            $data= Image::orderBy('id', 'desc')->get();
+            $data = Image::orderBy('id', 'desc')->get();
         } else {
-            $data= Image::orderBy('created_at', 'desc')->get();
+            $data = Image::orderBy('created_at', 'desc')->get();
         }
 
         return response($data);
-        
     }
-    public function Dashboard(){
+    public function Dashboard()
+    {
         // $data['allData'] = Image::all();
         $data['allData'] = Image::paginate(10);
 
-    return view('backend.image.dashboard_view_image', $data);
-
+        return view('backend.image.dashboard_view_image', $data);
     }
 }

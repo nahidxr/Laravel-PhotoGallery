@@ -1,11 +1,13 @@
 @extends('admin.admin_master')
 @section('admin')
-
 <div id="image_data">
+
     <div class="content-wrapper">
         <div class="container-full">
             <!-- Content Header (Page header) -->
             <!-- Main content -->
+
+
             <section class="content">
                 <div class="row">
 
@@ -103,35 +105,35 @@
 
 @endsection
 
-@push('scripts')
+
+
+
+
 <script>
     $(document).ready(function () {
-
-        //alert('123');
-        $(document).on('click', '.page-link', function (event) {
+        $(document).on('click', '.pagination a', function (event) {
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];
-            // alert(page);
-
-            $.ajax({
-                type: 'get',
-                url: "{{ route('image.fetch') }}",
-                success: function (data)
-
-                {
-                    console.log(data);
-                    $('#image_data').html(data);
-                }
-            });
-
+            getMoreImages(page);
         });
 
     });
 
+
+    function getMoreImages(page) {
+
+        $.ajax({
+            type: "GET",
+            url: "{{ route('image.fetch') }}",
+            success: function (data) {
+                $('#image_data').html(data);
+            }
+        });
+    }
+
 </script>
 
 
-@endpush
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -157,7 +159,10 @@
                                 <td>' + value.title + '</td>\
                                 <td>' + value.description + '</td>\
                                 <td>' + value.created_at + '</td>\
-                                <td><a href="{{ route("image.edit",' + value.id +') }}"class="btn btn-info">Edit</a> <a href="{{ route("image.delete",'+value.id +') }}"class="btn btn-danger">Delete</a></td>\</tr>';
+                                <td><a href="{{ route("image.edit",' + value.id +
+                            ') }}"class="btn btn-info">Edit</a> <a href="{{ route("image.delete",' +
+                            value.id +
+                            ') }}"class="btn btn-danger">Delete</a></td>\</tr>';
 
                     });
 

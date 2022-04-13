@@ -35,13 +35,14 @@ Route::prefix('users')->middleware(['auth:sanctum', 'verified'])->group(function
 //manage photo gallery
 Route::prefix('images')->middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/view', [ImageController::class, 'ImageView'])->name('image.view');
-    Route::get('/fetch', [ImageController::class, 'fetch'])->name('image.fetch');
     Route::get('/add', [ImageController::class, 'ImageAdd'])->name('image.add');
     Route::post('/store', [ImageController::class, 'ImageStore'])->name('image.store');
     Route::get('/edit/{id}', [ImageController::class, 'ImageEdit'])->name('image.edit');
     Route::post('/update/{id}', [ImageController::class, 'ImageUpdate'])->name('image.update');
     Route::get('/delete/{id}', [ImageController::class, 'ImageDelete'])->name('image.delete');
     Route::get('/sort/{id}', [ImageController::class, 'SortData'])->name('sort.data');
+    Route::get('/fetch', [ImageController::class, 'Fetch'])->name('image.fetch');
+
 });
 //frontend
 Route::get('/', [HomeController::class, 'index']);
